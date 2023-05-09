@@ -3,6 +3,8 @@ This is a simple script, a "Flow" written with Microsoft's Power Automate. So yo
 It lets more than 1 user to be able to play a yuzu game with different saves while sharing other settings.
 Just prompts asking if you're Player1 or Player2, then does its thing with save files and finally opens yuzu.
 
+You will spend like 10 minutes setting this up and then you will save time everytime a different user wants to play.
+
 # Disclaimer
 I am not responsible for any damage or loss of your files. If you're trying this you should make backups of every save file that will be involved in this, and do not start playing until you check that everything is working as expected. 
 
