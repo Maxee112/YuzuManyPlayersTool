@@ -1,0 +1,20 @@
+
+FUNCTION Main_copy GLOBAL
+    Variables.CreateNewList List=> Players
+    Variables.AddItemToList Item: $'''PLAYER1''' List: Players
+    Variables.AddItemToList Item: $'''PLAYER2''' List: Players
+    Display.SelectFromListDialog.SelectFromList Title: $'''Who are you?''' Message: $'''Select one:''' List: Players IsTopMost: False AllowEmpty: False SelectedItem=> Player SelectedIndex=> SelectedIndex ButtonPressed=> ButtonPressed
+    File.ReadTextFromFile.ReadText File: $'''D:\\PATH\\TO\\oldsaves\\lastplayer.txt''' Encoding: File.TextFileEncoding.UTF8 Content=> LastPlayer
+    IF LastPlayer <> Player THEN
+        IF LastPlayer = $'''PLAYER2''' THEN
+            Folder.Move Folder: $'''D:\\PATH\\TO\\user\\nand\\user\\save\\0000000000000000\\YOURCODE\\GAMECODE''' Destination: $'''D:\\PATH\\TO\\oldsaves\\PLAYER2'''
+            Folder.Move Folder: $'''D:\\PATH\\TO\\oldsaves\\PLAYER1\\GAMECODE''' Destination: $'''D:\\PATH\\TO\\user\\nand\\user\\save\\0000000000000000\\YOURCODE'''
+        END
+        IF LastPlayer = $'''PLAYER1''' THEN
+            Folder.Move Folder: $'''D:\\PATH\\TO\\user\\nand\\user\\save\\0000000000000000\\YOURCODE\\GAMECODE''' Destination: $'''D:\\PATH\\TO\\oldsaves\\PLAYER1'''
+            Folder.Move Folder: $'''D:\\PATH\\TO\\oldsaves\\PLAYER2\\GAMECODE''' Destination: $'''D:\\PATH\\TO\\user\\nand\\user\\save\\0000000000000000\\YOURCODE'''
+        END
+        File.WriteText File: $'''D:\\PATH\\TO\\oldsaves\\lastplayer.txt''' TextToWrite: Player AppendNewLine: False IfFileExists: File.IfFileExists.Overwrite Encoding: File.FileEncoding.UTF8
+    END
+    System.RunApplication.RunApplication ApplicationPath: $'''D:\\PATH\\TO\\yuzu.exe''' WindowStyle: System.ProcessWindowStyle.Maximized
+END FUNCTION
