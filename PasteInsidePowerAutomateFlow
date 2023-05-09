@@ -1,5 +1,3 @@
-
-FUNCTION Main_copy GLOBAL
     Variables.CreateNewList List=> Players
     Variables.AddItemToList Item: $'''PLAYER1''' List: Players
     Variables.AddItemToList Item: $'''PLAYER2''' List: Players
@@ -17,4 +15,4 @@ FUNCTION Main_copy GLOBAL
         File.WriteText File: $'''D:\\PATH\\TO\\oldsaves\\lastplayer.txt''' TextToWrite: Player AppendNewLine: False IfFileExists: File.IfFileExists.Overwrite Encoding: File.FileEncoding.UTF8
     END
     System.RunApplication.RunApplication ApplicationPath: $'''D:\\PATH\\TO\\yuzu.exe''' WindowStyle: System.ProcessWindowStyle.Maximized
-END FUNCTION
+   
